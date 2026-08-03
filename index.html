@@ -6,7 +6,42 @@
     <meta name="theme-color" content="#203252" />
     <meta
       name="description"
-      content="Invitación de casamiento de Julián y Fiorela"
+      content="Invitación de casamiento de Julián y Fiorela · Viernes 5 de marzo de 2027"
+    />
+    <link rel="canonical" href="https://julianyfiorella.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Julián &amp; Fiorela" />
+    <meta property="og:title" content="Julián &amp; Fiorela — Nos casamos" />
+    <meta
+      property="og:description"
+      content="Viernes 5 de marzo de 2027 · Monte Grande, Buenos Aires"
+    />
+    <meta property="og:url" content="https://julianyfiorella.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://julianyfiorella.vercel.app/og-invitacion.jpg?v=20270305"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://julianyfiorella.vercel.app/og-invitacion.jpg?v=20270305"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Julián y Fiorela · Nos casamos · 5 de marzo de 2027"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Julián &amp; Fiorela — Nos casamos" />
+    <meta
+      name="twitter:description"
+      content="Viernes 5 de marzo de 2027 · Monte Grande, Buenos Aires"
+    />
+    <meta
+      name="twitter:image"
+      content="https://julianyfiorella.vercel.app/og-invitacion.jpg?v=20270305"
     />
     <title>Julián &amp; Fiorela — Nos casamos</title>
     <script>
@@ -1445,7 +1480,7 @@
         <p class="eyebrow">Nos casamos</p>
         <h1 class="names">Julián<span class="ampersand">&amp;</span>Fiorela</h1>
         <div class="hero-line" aria-hidden="true"></div>
-        <p class="hero-date">Domingo · 02 · 08 · 2026</p>
+        <p class="hero-date">Viernes · 05 · 03 · 2027</p>
         <p class="hero-place">Monte Grande · Buenos Aires</p>
         <a class="dress-chip" href="#dress-code">✦ Dress code · Etiqueta formal</a>
         <a class="scroll-cue" href="#cuenta" aria-label="Continuar a la cuenta regresiva">
@@ -1489,11 +1524,11 @@
           <p class="section-kicker" data-reveal data-direction="up">El gran día</p>
           <h2 class="section-title" data-reveal data-direction="up" data-delay="80">La celebración</h2>
           <div class="event-layout">
-            <div class="date-card" aria-label="2 de agosto de 2026" data-reveal data-direction="left" data-delay="140">
+            <div class="date-card" aria-label="5 de marzo de 2027" data-reveal data-direction="left" data-delay="140">
               <div>
-                <span class="date-month">Agosto</span>
-                <strong class="date-day">02</strong>
-                <span class="date-year">Dos mil veintiséis</span>
+                <span class="date-month">Marzo</span>
+                <strong class="date-day">05</strong>
+                <span class="date-year">Dos mil veintisiete</span>
               </div>
             </div>
             <div class="event-copy" data-reveal data-direction="right" data-delay="220">
@@ -1718,7 +1753,7 @@
 
     <footer class="footer">
       <p class="footer-names" data-reveal data-direction="up">Julián &amp; Fiorela</p>
-      <p class="footer-date" data-reveal data-direction="up" data-delay="100">02 · 08 · 2026</p>
+      <p class="footer-date" data-reveal data-direction="up" data-delay="100">05 · 03 · 2027</p>
       <small data-reveal data-direction="up" data-delay="180">Hecho con amor para una noche inolvidable</small>
     </footer>
 
@@ -1773,7 +1808,7 @@
         motionPreference.addListener(handleMotionPreference);
       }
 
-      const weddingDate = new Date("2026-08-02T21:00:00-03:00");
+      const weddingDate = new Date("2027-03-05T18:30:00-03:00");
       const title = document.getElementById("countdown-title");
       const values = {
         days: document.getElementById("days"),
@@ -1801,7 +1836,7 @@
 
         if (distance <= 0) {
           Object.values(values).forEach((element) => setCountdownValue(element, "00"));
-          const sameDay = now.toLocaleDateString("en-CA", { timeZone: "America/Argentina/Buenos_Aires" }) === "2026-08-02";
+          const sameDay = now.toLocaleDateString("en-CA", { timeZone: "America/Argentina/Buenos_Aires" }) === "2027-03-05";
           title.textContent = sameDay ? "¡Hoy es el gran día!" : "Gracias por acompañarnos";
           return;
         }
