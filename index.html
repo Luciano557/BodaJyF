@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#203252" />
     <meta
       name="description"
@@ -165,7 +165,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 88px clamp(38px, 6vw, 110px) 72px;
+        padding: 118px clamp(38px, 6vw, 110px) 72px;
         text-align: center;
       }
 
@@ -200,12 +200,51 @@
       }
 
       .eyebrow {
-        margin: 0 0 22px;
+        position: absolute;
+        z-index: 3;
+        top: calc(env(safe-area-inset-top, 0px) + 28px);
+        left: 0;
+        right: 0;
+        width: min(330px, calc(100% - 44px));
+        display: grid;
+        grid-template-columns: minmax(32px, 1fr) auto minmax(32px, 1fr);
+        gap: 15px;
+        align-items: center;
+        margin: 0 auto;
         color: var(--gold-light);
-        font-size: 0.68rem;
+        font-size: 0.66rem;
         font-weight: 500;
-        letter-spacing: 0.42em;
+        letter-spacing: 0.38em;
+        line-height: 1;
+        text-shadow: 0 2px 18px rgba(21, 35, 60, 0.55);
         text-transform: uppercase;
+      }
+
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "";
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(239, 213, 164, 0.78));
+        transform-origin: right;
+      }
+
+      .eyebrow::after {
+        background: linear-gradient(90deg, rgba(239, 213, 164, 0.78), transparent);
+        transform-origin: left;
+      }
+
+      .eyebrow-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        white-space: nowrap;
+      }
+
+      .eyebrow-star {
+        display: inline-block;
+        color: var(--gold);
+        font-size: 0.58rem;
+        letter-spacing: 0;
       }
 
       .motion-ok .hero-copy > .eyebrow,
@@ -218,7 +257,18 @@
       }
 
       .motion-ok .hero-copy > .eyebrow {
+        animation-name: hero-announcement-in;
+        animation-duration: 1.15s;
         animation-delay: 0.35s;
+      }
+
+      .motion-ok .eyebrow::before,
+      .motion-ok .eyebrow::after {
+        animation: announcement-rule-in 1.1s var(--ease-editorial) 0.7s both;
+      }
+
+      .motion-ok .eyebrow-star {
+        animation: announcement-sparkle 3.8s ease-in-out 1.35s infinite both;
       }
 
       .motion-ok .hero-copy > .names {
@@ -1375,6 +1425,40 @@
         }
       }
 
+      @keyframes hero-announcement-in {
+        from {
+          opacity: 0;
+          transform: translate3d(0, -14px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes announcement-rule-in {
+        from {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        to {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes announcement-sparkle {
+        0%,
+        100% {
+          opacity: 0.62;
+          transform: rotate(0deg) scale(0.9);
+        }
+        50% {
+          opacity: 1;
+          transform: rotate(90deg) scale(1.16);
+        }
+      }
+
       @keyframes scroll-cue-in {
         from {
           opacity: 0;
@@ -1542,6 +1626,13 @@
           padding: 120px 22px 72px;
         }
 
+        .eyebrow {
+          top: calc(env(safe-area-inset-top, 0px) + 24px);
+          width: min(310px, calc(100% - 44px));
+          gap: 13px;
+          font-size: 0.61rem;
+        }
+
         .names {
           font-size: clamp(4.5rem, 22vw, 6.7rem);
         }
@@ -1664,7 +1755,9 @@
         />
       </div>
       <div class="hero-copy">
-        <p class="eyebrow">Nos casamos</p>
+        <p class="eyebrow">
+          <span class="eyebrow-text"><span class="eyebrow-star" aria-hidden="true">✦</span>Nos casamos</span>
+        </p>
         <h1 class="names">Julián<span class="ampersand">&amp;</span>Fiorella</h1>
         <div class="hero-line" aria-hidden="true"></div>
         <p class="hero-date">Viernes · 05 · 03 · 2027</p>
