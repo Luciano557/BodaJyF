@@ -89,8 +89,21 @@
       }
 
       button,
-      input {
+      input,
+      textarea {
         font: inherit;
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
       }
 
       a {
@@ -1110,6 +1123,152 @@
         border-color: var(--gold-light);
       }
 
+      .song-form .button {
+        width: 100%;
+      }
+
+      .song-form[aria-busy="true"] .button {
+        cursor: wait;
+        opacity: 0.68;
+      }
+
+      .song-status {
+        min-height: 18px;
+        margin: 11px 0 0 !important;
+        color: rgba(255, 253, 248, 0.72) !important;
+        font-size: 0.64rem !important;
+        line-height: 1.45 !important;
+      }
+
+      .spotify-results {
+        width: 100%;
+        display: grid;
+        gap: 8px;
+        margin: 15px 0 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+      }
+
+      .spotify-results[hidden] {
+        display: none;
+      }
+
+      .spotify-result {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        padding: 8px;
+        border: 1px solid rgba(223, 186, 124, 0.2);
+        background: rgba(255, 253, 248, 0.055);
+        transition: transform 180ms ease, opacity 180ms ease, border-color 180ms ease;
+      }
+
+      .motion-ok .spotify-result {
+        animation: result-in 0.45s var(--ease-editorial) both;
+        animation-delay: calc(var(--result-index, 0) * 55ms);
+      }
+
+      .spotify-result:hover,
+      .spotify-result:focus-within {
+        border-color: rgba(239, 213, 164, 0.5);
+        transform: translateY(-1px);
+      }
+
+      .spotify-cover,
+      .spotify-cover-placeholder {
+        width: 46px;
+        height: 46px;
+        object-fit: cover;
+        background: rgba(255, 253, 248, 0.08);
+      }
+
+      .spotify-cover-placeholder {
+        display: grid;
+        place-items: center;
+        color: var(--gold-light);
+      }
+
+      .spotify-track {
+        min-width: 0;
+      }
+
+      .spotify-track a {
+        display: block;
+        overflow: hidden;
+        color: var(--white);
+        font-family: var(--serif);
+        font-size: 0.92rem;
+        line-height: 1.15;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .spotify-track span {
+        display: block;
+        overflow: hidden;
+        margin-top: 4px;
+        color: rgba(255, 253, 248, 0.55);
+        font-size: 0.56rem;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .song-add {
+        min-width: 62px;
+        min-height: 34px;
+        padding: 7px 9px;
+        border: 1px solid rgba(223, 186, 124, 0.62);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--gold-light);
+        cursor: pointer;
+        font-size: 0.52rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: 180ms ease;
+      }
+
+      .song-add:hover,
+      .song-add:focus-visible {
+        background: var(--gold);
+        color: var(--navy-deep);
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      .song-add:disabled {
+        cursor: default;
+        opacity: 0.55;
+        transform: none;
+      }
+
+      .spotify-attribution {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin: 13px 0 0 !important;
+        color: rgba(255, 253, 248, 0.46) !important;
+        font-size: 0.54rem !important;
+        letter-spacing: 0.08em;
+        line-height: 1.2 !important;
+        text-transform: uppercase;
+      }
+
+      .spotify-attribution::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #1ed760;
+        box-shadow: 0 0 0 3px rgba(30, 215, 96, 0.12);
+      }
+
       .footer {
         position: relative;
         overflow: hidden;
@@ -1173,6 +1332,17 @@
         }
         to {
           opacity: 1;
+        }
+      }
+
+      @keyframes result-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
@@ -1734,21 +1904,39 @@
               <p>
                 Subí al álbum compartido esos momentos espontáneos que solo vos viste.
               </p>
-              <button class="button mock-action" type="button" data-action="álbum de Google Fotos">
+              <a
+                class="button"
+                href="https://photos.app.goo.gl/MqVhLXF4qwoAEPw17"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir el álbum compartido de Google Fotos"
+              >
                 Subir recuerdos
-              </button>
+              </a>
             </article>
 
-            <article class="experience-card" data-reveal data-direction="up" data-delay="250">
+            <article class="experience-card music-card" data-reveal data-direction="up" data-delay="250">
               <span class="card-number">02</span>
               <span class="card-icon" aria-hidden="true">♫</span>
               <h3>Nuestra música</h3>
               <p>¿Qué canción no puede faltar? Ayudanos a armar la playlist de la fiesta.</p>
-              <form class="song-form" id="song-form">
-                <label for="song" style="position:absolute;left:-9999px">Canción recomendada</label>
-                <input id="song" name="song" type="text" placeholder="Tema · Artista" />
-                <button class="button light" type="submit">Recomendar canción</button>
+              <form class="song-form" id="song-form" role="search" aria-busy="false">
+                <label class="visually-hidden" for="song">Buscar una canción en Spotify</label>
+                <input
+                  id="song"
+                  name="song"
+                  type="search"
+                  placeholder="Tema · Artista"
+                  minlength="2"
+                  maxlength="80"
+                  autocomplete="off"
+                  required
+                />
+                <button class="button light" id="song-search-button" type="submit">Buscar en Spotify</button>
               </form>
+              <p class="song-status" id="song-status" role="status" aria-live="polite"></p>
+              <ul class="spotify-results" id="spotify-results" aria-label="Resultados de Spotify" hidden></ul>
+              <p class="spotify-attribution">Resultados de Spotify</p>
             </article>
 
             <article class="experience-card" data-reveal data-direction="up" data-delay="330">
@@ -1885,16 +2073,136 @@
         });
       });
 
-      document.getElementById("song-form").addEventListener("submit", (event) => {
+      const songForm = document.getElementById("song-form");
+      const songInput = document.getElementById("song");
+      const songSearchButton = document.getElementById("song-search-button");
+      const songStatus = document.getElementById("song-status");
+      const spotifyResults = document.getElementById("spotify-results");
+
+      function setSongStatus(message) {
+        songStatus.textContent = message;
+      }
+
+      function createSpotifyResult(track, index) {
+        const item = document.createElement("li");
+        item.className = "spotify-result";
+        item.style.setProperty("--result-index", index);
+
+        let cover;
+        if (track.image) {
+          cover = document.createElement("img");
+          cover.className = "spotify-cover";
+          cover.src = track.image;
+          cover.alt = "";
+          cover.width = 46;
+          cover.height = 46;
+          cover.loading = "lazy";
+        } else {
+          cover = document.createElement("span");
+          cover.className = "spotify-cover-placeholder";
+          cover.textContent = "♫";
+          cover.setAttribute("aria-hidden", "true");
+        }
+
+        const details = document.createElement("div");
+        details.className = "spotify-track";
+        const link = document.createElement("a");
+        link.href = track.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = track.name;
+        link.setAttribute("aria-label", `${track.name}, de ${track.artists}, en Spotify`);
+        const artist = document.createElement("span");
+        artist.textContent = track.artists;
+        details.append(link, artist);
+
+        const addButton = document.createElement("button");
+        addButton.className = "song-add";
+        addButton.type = "button";
+        addButton.textContent = "Sumar";
+        addButton.dataset.uri = track.uri;
+        addButton.dataset.name = track.name;
+        addButton.setAttribute("aria-label", `Sumar ${track.name} a la playlist`);
+
+        item.append(cover, details, addButton);
+        return item;
+      }
+
+      songForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        const input = document.getElementById("song");
-        if (!input.value.trim()) {
-          showToast("Escribí una canción para ver cómo funcionaría esta sección.");
-          input.focus();
+        const query = songInput.value.trim();
+        if (query.length < 2) {
+          setSongStatus("Escribí al menos dos caracteres para buscar.");
+          songInput.focus();
           return;
         }
-        showToast(`¡Anotado! “${input.value.trim()}” se enviaría a la lista de los novios.`);
-        input.value = "";
+
+        songForm.setAttribute("aria-busy", "true");
+        songSearchButton.disabled = true;
+        songSearchButton.textContent = "Buscando…";
+        spotifyResults.hidden = true;
+        spotifyResults.replaceChildren();
+        setSongStatus("Buscando canciones…");
+
+        try {
+          const response = await fetch(`/api/spotify-search?q=${encodeURIComponent(query)}`);
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.error || "No pudimos buscar en Spotify.");
+
+          if (!payload.tracks.length) {
+            setSongStatus("No encontramos resultados. Probá con otro tema o artista.");
+            return;
+          }
+
+          spotifyResults.replaceChildren(
+            ...payload.tracks.map((track, index) => createSpotifyResult(track, index))
+          );
+          spotifyResults.hidden = false;
+          setSongStatus("Elegí una canción para sumarla a la playlist.");
+        } catch (error) {
+          setSongStatus(error.message || "No pudimos conectarnos con Spotify.");
+        } finally {
+          songForm.setAttribute("aria-busy", "false");
+          songSearchButton.disabled = false;
+          songSearchButton.textContent = "Buscar en Spotify";
+        }
+      });
+
+      spotifyResults.addEventListener("click", async (event) => {
+        const button = event.target.closest(".song-add");
+        if (!button || button.disabled) return;
+
+        const originalLabel = button.textContent;
+        button.disabled = true;
+        button.textContent = "Sumando…";
+        setSongStatus(`Sumando “${button.dataset.name}”…`);
+
+        try {
+          const response = await fetch("/api/spotify-add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ uri: button.dataset.uri })
+          });
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.error || "No pudimos sumar la canción.");
+
+          const duplicate = payload.status === "duplicate";
+          button.textContent = duplicate ? "Ya estaba" : "Agregada";
+          setSongStatus(
+            duplicate
+              ? "Esa canción ya estaba en la playlist. ¡Gran elección!"
+              : "¡Listo! La canción ya forma parte de la playlist de la fiesta."
+          );
+          showToast(
+            duplicate
+              ? `“${button.dataset.name}” ya estaba en la playlist.`
+              : `¡Sumamos “${button.dataset.name}” a la playlist!`
+          );
+        } catch (error) {
+          button.disabled = false;
+          button.textContent = originalLabel;
+          setSongStatus(error.message || "No pudimos sumar la canción. Probá nuevamente.");
+        }
       });
     </script>
   </body>
