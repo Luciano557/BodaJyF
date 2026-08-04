@@ -671,18 +671,24 @@
       }
 
       .venue-card-top {
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 18px;
+        justify-content: center;
+        min-height: 34px;
+        padding-inline: 46px;
       }
 
       .venue-step {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
         display: grid;
         width: 34px;
         height: 34px;
-        flex: 0 0 auto;
         place-items: center;
+        margin-block: auto;
         border: 1px solid rgba(157, 119, 65, 0.52);
         border-radius: 50%;
         color: #8e6939;
@@ -692,7 +698,8 @@
       }
 
       .venue-moment {
-        flex: 1;
+        width: 100%;
+        text-align: center;
       }
 
       .venue-moment small {
