@@ -949,8 +949,57 @@
         line-height: 1.8;
       }
 
-      .dress-inspiration p + p {
-        margin-top: 16px;
+      .dress-inspiration .inspiration-note {
+        margin-top: 22px;
+      }
+
+      .color-palette {
+        display: grid;
+        gap: 18px;
+        margin: 24px auto 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .inspiration-palette {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        max-width: 520px;
+      }
+
+      .reserved-palette {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-width: 320px;
+        gap: 12px;
+      }
+
+      .color-palette li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .color-swatch {
+        display: block;
+        width: 48px;
+        height: 48px;
+        border: 1px solid rgba(255, 253, 248, 0.4);
+        border-radius: 50%;
+        background: var(--swatch);
+      }
+
+      .reserved-palette .color-swatch {
+        width: 36px;
+        height: 36px;
+      }
+
+      .color-name {
+        color: rgba(255, 253, 248, 0.76);
+        font-size: 0.75rem;
+        letter-spacing: 0.02em;
+        line-height: 1.45;
+        text-align: center;
       }
 
       .reserved-groups {
@@ -1726,6 +1775,14 @@
           transform: none !important;
         }
       }
+
+      @media (max-width: 400px) {
+        .inspiration-palette {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          max-width: 260px;
+          gap: 22px 20px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1880,9 +1937,26 @@
             <h3>Para inspirarte</h3>
             <p>
               Tonos sofisticados, profundos, oscuros o pastel, acordes a una celebración de noche.
-              Azul noche, verde, verde salvia, rosa viejo, chocolate o negro pueden inspirarte.
             </p>
-            <p>
+            <ul class="color-palette inspiration-palette" aria-label="Cuatro ejemplos de colores para inspirarte">
+              <li>
+                <span class="color-swatch" style="--swatch: #15233c" aria-hidden="true"></span>
+                <span class="color-name">Azul noche</span>
+              </li>
+              <li>
+                <span class="color-swatch" style="--swatch: #315549" aria-hidden="true"></span>
+                <span class="color-name">Verde bosque</span>
+              </li>
+              <li>
+                <span class="color-swatch" style="--swatch: #b9828a" aria-hidden="true"></span>
+                <span class="color-name">Rosa viejo</span>
+              </li>
+              <li>
+                <span class="color-swatch" style="--swatch: #604132" aria-hidden="true"></span>
+                <span class="color-name">Chocolate</span>
+              </li>
+            </ul>
+            <p class="inspiration-note">
               Son solo sugerencias: elegí libremente el color que más te guste,
               teniendo en cuenta los tonos reservados.
             </p>
@@ -1891,10 +1965,38 @@
             <div class="reserved-colors">
               <h3 class="reserved-title">Tonos reservados para las damas de honor</h3>
               <p class="dress-note">Los tonos burdeos y sus variantes están reservados para ellas.</p>
+              <ul class="color-palette reserved-palette" aria-label="Ejemplos de tonos burdeos reservados para las damas de honor">
+                <li>
+                  <span class="color-swatch" style="--swatch: #800020" aria-hidden="true"></span>
+                  <span class="color-name">Burdeos</span>
+                </li>
+                <li>
+                  <span class="color-swatch" style="--swatch: #6f2d3d" aria-hidden="true"></span>
+                  <span class="color-name">Vino</span>
+                </li>
+                <li>
+                  <span class="color-swatch" style="--swatch: #4e1829" aria-hidden="true"></span>
+                  <span class="color-name">Burdeos oscuro</span>
+                </li>
+              </ul>
             </div>
             <div class="reserved-colors">
               <h3 class="reserved-title">Tonos reservados para la novia</h3>
               <p class="dress-note">Los tonos claros, como blanco, marfil y similares, están reservados para ella.</p>
+              <ul class="color-palette reserved-palette" aria-label="Ejemplos de tonos claros reservados para la novia">
+                <li>
+                  <span class="color-swatch" style="--swatch: #fffdf8" aria-hidden="true"></span>
+                  <span class="color-name">Blanco</span>
+                </li>
+                <li>
+                  <span class="color-swatch" style="--swatch: #f7f1e5" aria-hidden="true"></span>
+                  <span class="color-name">Marfil</span>
+                </li>
+                <li>
+                  <span class="color-swatch" style="--swatch: #eadcc3" aria-hidden="true"></span>
+                  <span class="color-name">Champán</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
